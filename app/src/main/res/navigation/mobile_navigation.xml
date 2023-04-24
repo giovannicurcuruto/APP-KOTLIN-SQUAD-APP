@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.case1squadapps.ui.home.HomeFragment"
+        android:name="com.example.case1squadapps.ui.dashboard.DashboardFragment"
         android:label="@string/dashboard"
         tools:layout="@layout/fragment_dashboard" />
 
@@ -15,21 +15,21 @@
         android:id="@+id/navigation_bookmark"
         android:name="com.example.case1squadapps.ui.dashboard.DashboardFragment"
         android:label="@string/bookmark"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_bookmark" />
 
     <fragment
         android:id="@+id/navigation_alarm"
 
         android:label="@string/alarm"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_listalarm" />
     <fragment
         android:id="@+id/navigation_video"
 
         android:label="@string/video"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_listvideo" />
     <fragment
         android:id="@+id/navigation_fab"
 
         android:label="@string/FAB"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_fab" />
 </navigation>

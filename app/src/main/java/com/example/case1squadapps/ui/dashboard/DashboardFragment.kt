@@ -1,45 +1,20 @@
 package com.example.case1squadapps.ui.dashboard
 
-import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.example.case1squadapps.databinding.FragmentDashboardBinding
+import com.example.case1squadapps.ui.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
-class DashboardFragment : Fragment() {
+@AndroidEntryPoint
+class DashboardFragment: BaseFragment<FragmentDashboardBinding, DashboardViewModel>() {
+    override val viewModel: DashboardViewModel by viewModels()
 
-    private var _binding: FragmentDashboardBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
-
-    override fun onCreateView(
+    override fun getViewBinding(
         inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        val dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
-
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        container: ViewGroup?
+    ): FragmentDashboardBinding = FragmentDashboardBinding.inflate(inflater, container, false)
 
 
-        /**
-        val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-         */
-        return root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }
