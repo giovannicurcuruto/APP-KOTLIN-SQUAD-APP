@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">case1SquadApps</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="dashboard">Home</string>
+    <string name="bookmark">Favs</string>
+    <string name="alarm">Alarme</string>
+    <string name="video">Câmera</string>
+    <string name="FAB">ADDDEV</string>
 </resources>
