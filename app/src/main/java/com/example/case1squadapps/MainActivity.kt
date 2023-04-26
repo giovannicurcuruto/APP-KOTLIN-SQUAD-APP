@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment;
         val navController = navHostFragment.navController
 
-        binding.navViewBottomMenuActivityMain.apply {
+        binding.bottomNavigation.apply {
             setupWithNavController(navController)
             setOnNavigationItemReselectedListener {  }
         }

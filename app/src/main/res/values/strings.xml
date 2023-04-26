@@ -3,6 +3,9 @@
     <string name="dashboard">Home</string>
     <string name="bookmark">Favs</string>
     <string name="alarm">Alarme</string>
-    <string name="video">Câmera</string>
+    <string name="video">Video</string>
     <string name="FAB">ADDDEV</string>
+
+    <string name="an_error_occurred">Um erro ocorreu!</string>
+    <string name="saved_successfully">Salvo com sucesso!</string>
 </resources>

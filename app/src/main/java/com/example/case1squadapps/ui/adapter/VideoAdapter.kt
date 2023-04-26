@@ -6,10 +6,9 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.case1squadapps.data.model.videoDevices.VideoDeviceModel
-import com.example.case1squadapps.databinding.FragmentFabBinding
 import com.example.case1squadapps.databinding.ItemDeviceBinding
 
-class videoAdapter: RecyclerView.Adapter<videoAdapter.VideoDevicesViewHolder>() {
+class VideoAdapter: RecyclerView.Adapter<VideoAdapter.VideoDevicesViewHolder>() {
 
     inner class VideoDevicesViewHolder (val binding: ItemDeviceBinding): RecyclerView.ViewHolder(binding.root)
 
@@ -25,7 +24,7 @@ class videoAdapter: RecyclerView.Adapter<videoAdapter.VideoDevicesViewHolder>() 
             oldItem: VideoDeviceModel,
             newItem: VideoDeviceModel
         ): Boolean {
-            return oldItem.id == newItem.id && oldItem.name == newItem.name && oldItem.macAddress ==newItem.macAddress && oldItem.password == newItem.password
+            return oldItem.id == newItem.id && oldItem.name == newItem.name && oldItem.serial ==newItem.serial && oldItem.password == newItem.password && oldItem.username == newItem.username
         }
 
     }
@@ -50,7 +49,12 @@ class videoAdapter: RecyclerView.Adapter<videoAdapter.VideoDevicesViewHolder>() 
         val videoDevice = vDevice[position]
         holder.binding.apply {
             itemDevice.text = videoDevice.name
-            itemIconDevice.text = videoDevice.id.toString()
+        }
+
+        holder.itemView.setOnClickListener {
+            onItemClickListener?.let {
+                it(videoDevice)
+            }
         }
     }
 

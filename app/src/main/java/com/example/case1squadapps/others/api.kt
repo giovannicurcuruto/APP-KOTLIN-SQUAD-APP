@@ -13,10 +13,13 @@ interface api {
        @Query("id") id_alarm: String? = null
    ): Response<AlarmCentralsResponse>
 
-    @GET("video-devices")
-    suspend fun listVideoDevices(
+    @GET("video-devices/{id}")
+    suspend fun listVideoDevicesById(
         @Query("id") id_vd: String? = null
     ): Response<VideoDeviceResponse>
+
+    @GET("video-devices")
+    suspend fun listVideoDevices() : Response<VideoDeviceResponse>
 
 
 }

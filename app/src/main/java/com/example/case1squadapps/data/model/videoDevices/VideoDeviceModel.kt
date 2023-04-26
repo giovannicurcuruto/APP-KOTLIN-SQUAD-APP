@@ -8,9 +8,11 @@ data class VideoDeviceModel(
     val id: Int,
     @SerializedName("name")
     val name: String,
-    @SerializedName("macAdress")
-    val macAddress: String,
+    @SerializedName("serial")
+    val serial: String,
+    @SerializedName("username")
+    val username: String,
     @SerializedName("password")
-    val password: Int
+    val password: String
 
 ): Serializable

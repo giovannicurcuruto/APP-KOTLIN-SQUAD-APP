@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/dashboardFragment">
+
+    <fragment
+        tools:layout="@layout/fragment_bookmark"
+        android:id="@+id/bookmarkFragment"
+        android:name="com.example.case1squadapps.ui.Bookmark.BookmarkFragment"
+        android:label="BookmarkFragment" >
+        <action
+            android:id="@+id/action_bookmarkFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dashboardFragment"
+        tools:layout="@layout/fragment_dashboard"
+        android:name="com.example.case1squadapps.ui.dashboard.DashboardFragment"
+        android:label="DashboardFragment" >
+        <argument
+            android:name="videodevice"
+            app:argType="com.example.case1squadapps.data.model.videoDevices.VideoDeviceModel" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_listalarm"
+        android:id="@+id/listAlarmFragment"
+        android:name="com.example.case1squadapps.ui.ListAlarm.ListAlarmFragment"
+        android:label="ListAlarmFragment" >
+        <action
+            android:id="@+id/action_listAlarmFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_listvideo"
+        android:id="@+id/listVideoFragment"
+        android:name="com.example.case1squadapps.ui.ListVideo.ListVideoFragment"
+        android:label="ListVideoFragment" >
+        <action
+            android:id="@+id/action_listVideoFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+    </fragment>
+    <fragment
+
+        android:id="@+id/newDeviceFragment"
+        android:name="com.example.case1squadapps.ui.Newdevice.NewDeviceFragment"
+        android:label="NewDeviceFragment" >
+        <action
+            android:id="@+id/action_newDeviceFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+    </fragment>
+</navigation>
