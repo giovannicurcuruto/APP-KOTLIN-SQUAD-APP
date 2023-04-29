@@ -17,13 +17,17 @@ import javax.inject.Singleton
 @dagger.Module
 @InstallIn(SingletonComponent::class)
 object Module {
+    // alterado para funções diferentes com HttpLoginginterceptor
+    @Singleton
+    @Provides
+    fun provideLogginInterceptor(): HttpLoggingInterceptor{
+        return HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+    }
 
     @Singleton
     @Provides
-    fun provideOkHttpClient(): OkHttpClient{
-        val loggin = HttpLoggingInterceptor()
-        loggin.level = HttpLoggingInterceptor.Level.BODY
-        
+    fun provideOkHttpClient(logging: HttpLoggingInterceptor): OkHttpClient{
+
         return OkHttpClient().newBuilder()
             .addInterceptor { chain ->
                 val newUrl = chain.request()
@@ -37,7 +41,7 @@ object Module {
                     .build()
 
                 chain.proceed(newRequest)
-            }.addInterceptor(loggin)
+            }.addInterceptor(logging)
             .build()
     }
 
@@ -48,12 +52,13 @@ object Module {
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client).build()
-    }
+    } //check
 
     @Singleton
     @Provides
     fun provideServiceApi(retrofit: Retrofit): api{
         return retrofit.create(api::class.java)
-    }
+    } //check
+
 
 }

@@ -5,7 +5,7 @@ import java.io.Serializable
 
 data class VideoDeviceModel(
     @SerializedName("id")
-    val id: Int,
+    val id: String,
     @SerializedName("name")
     val name: String,
     @SerializedName("serial")

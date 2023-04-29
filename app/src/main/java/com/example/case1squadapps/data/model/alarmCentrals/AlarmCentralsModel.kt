@@ -6,7 +6,7 @@ import java.io.Serializable
 
 data class AlarmCentralsModel(
     @SerializedName("id")
-    val id: Int,
+    val id: String,
     @SerializedName("name")
     val name: String,
     @SerializedName("macAddress")

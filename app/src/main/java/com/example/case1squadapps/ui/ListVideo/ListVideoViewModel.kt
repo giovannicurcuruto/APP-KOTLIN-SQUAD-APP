@@ -51,7 +51,7 @@ class ListVideoViewModel @Inject constructor(
 
         if(response.isSuccessful){
             response.body()?.let{values ->
-                return ResourceState.Sucess(values)
+                return ResourceState.Success(values)
             }
         }
         return ResourceState.Error("###################### ERRO NO RESOURCE"+    response.message())

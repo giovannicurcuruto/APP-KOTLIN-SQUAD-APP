@@ -24,7 +24,8 @@ class VideoAdapter: RecyclerView.Adapter<VideoAdapter.VideoDevicesViewHolder>() 
             oldItem: VideoDeviceModel,
             newItem: VideoDeviceModel
         ): Boolean {
-            return oldItem.id == newItem.id && oldItem.name == newItem.name && oldItem.serial ==newItem.serial && oldItem.password == newItem.password && oldItem.username == newItem.username
+            return oldItem.id == newItem.id && oldItem.name == newItem.name && oldItem.serial ==newItem.serial &&
+                    oldItem.password == newItem.password && oldItem.username == newItem.username
         }
 
     }
@@ -48,7 +49,8 @@ class VideoAdapter: RecyclerView.Adapter<VideoAdapter.VideoDevicesViewHolder>() 
     override fun onBindViewHolder(holder: VideoDevicesViewHolder, position: Int) {
         val videoDevice = vDevice[position]
         holder.binding.apply {
-            itemDevice.text = videoDevice.name
+            itemDevice.text = videoDevice.name.toString()
+            itemIconDevice.text = videoDevice.id.toString()
         }
 
         holder.itemView.setOnClickListener {
