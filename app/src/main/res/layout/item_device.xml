@@ -7,38 +7,51 @@
     android:layout_margin="8dp"
     app:cardCornerRadius="5dp"
     app:cardMaxElevation="2dp"
-    android:backgroundTint="@color/black"
+    android:backgroundTint="@color/secondaryMain"
     app:strokeColor="@color/white"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp">
-        <TextView
-            android:id="@+id/item_icon_device"
+
+        <ImageView
+            android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:icon="@drawable/ic_dashboard_black_24dp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/item_device"
-            />
+            app:srcCompat="@drawable/icvideodevice" />
+
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/item_device"
             style="@style/TextAppearance.MaterialComponents.Subtitle1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="36dp"
             android:text="device item"
             android:textColor="@color/white"
             android:textSize="18sp"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/overFlowItemDevice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="304dp"
+            android:layout_marginEnd="20dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="OverFlow"
             />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

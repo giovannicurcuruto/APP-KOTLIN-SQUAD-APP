@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/secondaryMain" >
 
     <item
         android:id="@+id/dashboardFragment"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/ichomebottom"
         android:title="@string/dashboard" />
 
     <item
         android:id="@+id/bookmarkFragment"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@drawable/icbookmark"
         android:title="@string/bookmark" />
 
     <item
         android:id="@+id/listAlarmFragment"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@drawable/icalarmdevice"
         android:title="@string/alarm" />
     <item
         android:id="@+id/listVideoFragment"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:icon="@drawable/icvideodevice"
         android:title="@string/video" />
     <item
         android:id="@+id/newDeviceFragment"

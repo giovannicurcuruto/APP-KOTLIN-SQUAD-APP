@@ -32,12 +32,9 @@ class AlarmAdapter (
         fun bind (alarmCentrals: AlarmCentralsModel){
             binding.apply {
                 itemDeviceAlarm.text = alarmCentrals.name
-                itemIconDeviceAlarm.text = alarmCentrals.id.toString()
             }
         }
     }
-
-
     interface OnItemClickListener{
         fun onItemClick(alarmCentrals: AlarmCentralsModel)
     }

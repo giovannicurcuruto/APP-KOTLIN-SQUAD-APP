@@ -5,6 +5,7 @@ import com.example.case1squadapps.data.model.alarmCentrals.AlarmCentralsResponse
 import com.example.case1squadapps.data.model.videoDevices.VideoDeviceResponse
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface api {
@@ -17,14 +18,15 @@ interface api {
         @Query("id") id_alarm: String? = null
     ): Response<AlarmCentralsResponse>
 
+    @GET("video-devices")
+    suspend fun listVideoDevices(): Response<VideoDeviceResponse>
 
-    @GET("video-devices/{id}")
+    @GET("video-devices/{id_video}")
     suspend fun listVideoDevicesById(
-        @Query("id") id_vd: String? = null
+        @Path(value = "id",
+            encoded = true) id_video: String?
     ): Response<VideoDeviceResponse>
 
-    @GET("video-devices")
-    suspend fun listVideoDevices() : Response<VideoDeviceResponse>
 
 
 }

@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/edSearchCharacter"
+        android:id="@+id/searchInputListFav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:imeOptions="actionSearch"
@@ -30,7 +30,7 @@
         android:selectAllOnFocus="true"
         android:textColor="@color/white"
         android:background="@color/secondaryMain"
-        tools:text="" />
+        tools:text="Pesquise favs" />
     </com.google.android.material.textfield.TextInputLayout>
 
    <androidx.recyclerview.widget.RecyclerView

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/opEditDevice"
+        android:title="Editar dispositivo"
+        />
+    <item
+        android:id="@+id/opInfo"
+        android:title="Informações"
+        />
+    <item
+        android:id="@+id/opFavorite"
+        android:title="Marcar Favorito"
+        />
+    <item
+        android:id="@+id/opRemove"
+        android:title="Remover disposito" />
+
+
+</menu>

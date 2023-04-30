@@ -1,12 +1,17 @@
 package com.example.case1squadapps.ui.adapter
 
-import android.view.LayoutInflater
-import android.view.ViewGroup
+import android.view.*
+import android.widget.Button
+import android.widget.PopupMenu
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.case1squadapps.R
 import com.example.case1squadapps.data.model.videoDevices.VideoDeviceModel
 import com.example.case1squadapps.databinding.ItemDeviceBinding
+import com.example.case1squadapps.others.toast
+import kotlin.coroutines.coroutineContext
 
 class VideoAdapter: RecyclerView.Adapter<VideoAdapter.VideoDevicesViewHolder>() {
 
@@ -50,7 +55,11 @@ class VideoAdapter: RecyclerView.Adapter<VideoAdapter.VideoDevicesViewHolder>() 
         val videoDevice = vDevice[position]
         holder.binding.apply {
             itemDevice.text = videoDevice.name.toString()
-            itemIconDevice.text = videoDevice.id.toString()
+
+        }
+
+        holder.binding.overFlowItemDevice.setOnClickListener {
+            showPopupMenu(holder.binding.overFlowItemDevice)
         }
 
         holder.itemView.setOnClickListener {
@@ -58,6 +67,22 @@ class VideoAdapter: RecyclerView.Adapter<VideoAdapter.VideoDevicesViewHolder>() 
                 it(videoDevice)
             }
         }
+
+
+    }
+
+    private fun showPopupMenu(overFlowItemDevice: Button) {
+        val popup = PopupMenu(overFlowItemDevice.context, overFlowItemDevice)
+        popup.inflate(R.menu.side_menu)
+        popup.setOnMenuItemClickListener { item ->
+            when(item.itemId){
+                R.id.opFavorite ->{
+                    true
+                }
+                else -> { false}
+            }
+        }
+        popup.show()
     }
 
     private var onItemClickListener: ((VideoDeviceModel) -> Unit)? = null
@@ -65,4 +90,5 @@ class VideoAdapter: RecyclerView.Adapter<VideoAdapter.VideoDevicesViewHolder>() 
     fun setOnClickListener(listener: (VideoDeviceModel) -> Unit){
         onItemClickListener = listener
     }
+
 }

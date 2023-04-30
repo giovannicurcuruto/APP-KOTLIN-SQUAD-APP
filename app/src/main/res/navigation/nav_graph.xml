@@ -20,8 +20,8 @@
         android:name="com.example.case1squadapps.ui.dashboard.DashboardFragment"
         android:label="DashboardFragment" >
         <argument
-            android:name="alarm1"
-            app:argType="com.example.case1squadapps.data.model.alarmCentrals.AlarmCentralsModel" />
+            android:name="video1"
+            app:argType="com.example.case1squadapps.data.model.videoDevices.VideoDeviceModel" />
     </fragment>
     <fragment
         tools:layout="@layout/fragment_listalarm"

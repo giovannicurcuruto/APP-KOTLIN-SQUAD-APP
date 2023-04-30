@@ -75,8 +75,8 @@ class ListAlarmFragment : Fragment(R.layout.fragment_listalarm), AlarmAdapter.On
         }
     }
     override fun onItemClick(alarmCentrals: AlarmCentralsModel) {
-        val action = ListAlarmFragmentDirections.actionListAlarmFragmentToDashboardFragment(alarmCentrals)
-        findNavController().navigate(action)
+        //val action = ListAlarmFragmentDirections.actionListAlarmFragmentToDashboardFragment(alarmCentrals)
+        //findNavController().navigate(action)
     }
 
 

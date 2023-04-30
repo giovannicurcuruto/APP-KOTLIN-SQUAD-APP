@@ -1,9 +1,13 @@
 package com.example.case1squadapps.data.model.videoDevices
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
-
+@Entity(tableName = "videoModel")
 data class VideoDeviceModel(
+    @PrimaryKey(autoGenerate = true)
+    val id_room: Int,
     @SerializedName("id")
     val id: String,
     @SerializedName("name")
