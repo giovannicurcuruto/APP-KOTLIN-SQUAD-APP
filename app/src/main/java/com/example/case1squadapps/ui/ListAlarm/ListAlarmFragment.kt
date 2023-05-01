@@ -15,15 +15,18 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.example.case1squadapps.R
 import com.example.case1squadapps.data.model.alarmCentrals.AlarmCentralsModel
 import com.example.case1squadapps.data.model.alarmCentrals.AlarmCentralsResponse
+import com.example.case1squadapps.data.model.videoDevices.VideoDeviceModel
 import com.example.case1squadapps.databinding.FragmentListalarmBinding
 import com.example.case1squadapps.databinding.FragmentListvideoBinding
 import com.example.case1squadapps.others.hide
 import com.example.case1squadapps.others.show
 import com.example.case1squadapps.others.toast
 import com.example.case1squadapps.state.ResourceState
+import com.example.case1squadapps.ui.ListVideo.ListVideoFragmentDirections
 import com.example.case1squadapps.ui.ListVideo.ListVideoViewModel
 import com.example.case1squadapps.ui.adapter.AlarmAdapter
 import com.example.case1squadapps.ui.adapter.VideoAdapter
@@ -34,8 +37,62 @@ import kotlinx.coroutines.launch
 import timber.log.Timber
 
 @AndroidEntryPoint
-class ListAlarmFragment : Fragment(R.layout.fragment_listalarm), AlarmAdapter.OnItemClickListener{
-    val viewModel: ListAlarmViewModel by viewModels()
+class ListAlarmFragment : BaseFragment<FragmentListalarmBinding, ListAlarmViewModel>(){
+
+    override val viewModel: ListAlarmViewModel by viewModels()
+
+    private val alarmAdapter by lazy { AlarmAdapter() }
+    private lateinit var alarmModel: AlarmCentralsModel
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupRecyclerView()
+        //clickAdapter()
+        collectObserver()
+    }
+
+    private fun collectObserver() = lifecycleScope.launch {
+        viewModel.listAlarmCentrals.collect {resource ->
+            when(resource){
+                is ResourceState.Success -> {
+                    binding.progressCircular.hide()
+                    resource.data?.let{values->
+                        alarmAdapter.alarmsDevices = values.data.toList()
+                    }
+                }
+                is ResourceState.Error -> {
+                    binding.progressCircular.hide()
+                    resource.message?.let{message->
+                        toast(getString((R.string.an_error_occurred)))
+                        Timber.tag("ListAlarmFragment").e("Error -> $message")
+                    }
+                }
+                is ResourceState.Loading ->{
+                    binding.progressCircular.show()
+                }
+                else ->{  }
+            }
+        }
+
+    }
+
+    private fun setupRecyclerView() = with(binding){
+        recyclerListAlarm.apply{
+            adapter = alarmAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+        }
+    }
+
+
+    override fun getViewBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ): FragmentListalarmBinding = FragmentListalarmBinding.inflate(inflater, container, false)
+
+}
+
+
+/*    val viewModel: ListAlarmViewModel by viewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -81,6 +138,4 @@ class ListAlarmFragment : Fragment(R.layout.fragment_listalarm), AlarmAdapter.On
 
 
 
-}
-
-
+ */

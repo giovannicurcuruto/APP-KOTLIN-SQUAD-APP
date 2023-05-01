@@ -49,7 +49,7 @@ class ListVideoFragment: BaseFragment<FragmentListvideoBinding, ListVideoViewMod
 
     private fun clickAdapter() {
         videoAdapter.setOnClickListener { videoDeviceModel ->
-        val action = ListVideoFragmentDirections            .actionListVideoFragmentToDashboardFragment(videoDeviceModel)
+        val action = ListVideoFragmentDirections.actionListVideoFragmentToDashboardFragment(videoDeviceModel)
           findNavController().navigate(action)
         }
     }

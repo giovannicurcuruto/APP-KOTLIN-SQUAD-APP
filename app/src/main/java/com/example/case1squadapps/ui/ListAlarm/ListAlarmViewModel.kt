@@ -24,58 +24,37 @@ import javax.inject.Inject
 @HiltViewModel
 class ListAlarmViewModel @Inject constructor(
     private val repositoryApp: Repository,
-    @ApplicationContext private val context: Context
+    //@ApplicationContext private val context: Context
 ):ViewModel() {
 
-    val listAlarmCentrals: MutableLiveData<ResourceState<AlarmCentralsResponse>> = MutableLiveData()
-    var listAlarmResponse: AlarmCentralsResponse? = null
+    private val _listAlarmCentrals = MutableStateFlow<ResourceState<AlarmCentralsResponse>>(ResourceState.Loading())
+    var listAlarmCentrals: StateFlow<ResourceState<AlarmCentralsResponse>> = _listAlarmCentrals
     init { fetch() }
 
     private fun fetch() = viewModelScope.launch(){
         safeFetch()
     }
 
-    private fun handleResponse(response: Response<AlarmCentralsResponse>): ResourceState<AlarmCentralsResponse> {
-        if(response.isSuccessful){
-            response.body()?.let{ values ->
-                return ResourceState.Success(values)
-            }
-        }
-        return ResourceState.Error(response.message())
-    }
 
     private fun HandleAlarmsResponse(response: Response<AlarmCentralsResponse>): ResourceState<AlarmCentralsResponse> {
         if(response.isSuccessful){
-            response.body()?.let { resultResponse ->
-                if(listAlarmResponse == null)
-                    listAlarmResponse = resultResponse
-                else{
-                    val oldItem = listAlarmResponse?.data
-                    val newItem = resultResponse.data
-                    oldItem?.addAll(newItem)
-                }
-                return ResourceState.Success(listAlarmResponse?: resultResponse)
+            response.body()?.let { value ->
+                return ResourceState.Success(value)
             }
         }
         return ResourceState.Error(response.message())
     }
 
     private suspend fun safeFetch() {
-        listAlarmCentrals.postValue(ResourceState.Loading())
         try{
-            if(hasInternetConnection(context)) {
-                println("################# repositoryApp.getAllAlarmCentrals()" + repositoryApp.getAllAlarmCentrals())
-                val response = repositoryApp.getAllAlarmCentrals()
-
-                listAlarmCentrals.postValue(HandleAlarmsResponse(response))
-            }else{
-                listAlarmCentrals.postValue(ResourceState.Error("Sem internet"))
-            }
-        }catch (e: java.lang.Exception){
+            val response = repositoryApp.getAllAlarmCentrals()
+            _listAlarmCentrals.value = HandleAlarmsResponse(response)
+        }catch (e:Throwable){
             when(e){
-                is IOException -> listAlarmCentrals.postValue(ResourceState.Error("Network Fail"))
-                else -> listAlarmCentrals.postValue(ResourceState.Error("Erro de Conversão"))
+                is IOException -> _listAlarmCentrals.value = ResourceState.Error("Erro com a internet")
+                else -> _listAlarmCentrals.value = ResourceState.Error("Falha na conversão de dados")
             }
+
         }
     }
 
