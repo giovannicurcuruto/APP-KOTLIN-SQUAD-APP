@@ -15,7 +15,8 @@ interface api {
 
     @GET("alarm-centrals")
     suspend fun listAlarmDevicesById(
-        @Query("id") id_alarm: String? = null
+        @Path(value = "id",
+            encoded = true) id_video: String?
     ): Response<AlarmCentralsResponse>
 
     @GET("video-devices")

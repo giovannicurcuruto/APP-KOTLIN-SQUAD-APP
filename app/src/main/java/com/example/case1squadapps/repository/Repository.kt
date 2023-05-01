@@ -23,7 +23,9 @@ class Repository @Inject constructor(
         }
     }
 
-    suspend fun listAlarm() = api.listAlarmDevices()
+    suspend fun getAlarmCentralsById(id: String): Response<AlarmCentralsResponse> {
+        return api.listAlarmDevicesById(id)
+    }
 
     suspend fun getAllAlarmCentrals(): Response<AlarmCentralsResponse> {
         return api.listAlarmDevices()

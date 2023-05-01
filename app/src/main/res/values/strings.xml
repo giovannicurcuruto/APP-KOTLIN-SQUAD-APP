@@ -8,4 +8,5 @@
 
     <string name="an_error_occurred">Um erro ocorreu!</string>
     <string name="saved_successfully">Salvo com sucesso!</string>
+    <string name="tipo_alarme">Tipo: Alarme</string>
 </resources>

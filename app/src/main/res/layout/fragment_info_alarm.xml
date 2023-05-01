@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundMain">
+    android:background="@color/backgroundMain"
+    android:id="@+id/containerInfoAlarm">
 
 
     <TextView
@@ -39,7 +40,7 @@
         android:id="@+id/textTypeAlarm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tipo: Alarme"
+        android:text="@string/tipo_alarme"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/textMacAddTitle"
         app:layout_constraintEnd_toEndOf="parent"

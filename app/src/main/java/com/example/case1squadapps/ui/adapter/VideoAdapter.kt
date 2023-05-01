@@ -4,6 +4,7 @@ import android.view.*
 import android.widget.Button
 import android.widget.PopupMenu
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -11,6 +12,7 @@ import com.example.case1squadapps.R
 import com.example.case1squadapps.data.model.videoDevices.VideoDeviceModel
 import com.example.case1squadapps.databinding.ItemDeviceBinding
 import com.example.case1squadapps.others.toast
+import com.example.case1squadapps.ui.ListVideo.ListVideoFragmentDirections
 import kotlin.coroutines.coroutineContext
 
 class VideoAdapter: RecyclerView.Adapter<VideoAdapter.VideoDevicesViewHolder>() {
@@ -67,8 +69,6 @@ class VideoAdapter: RecyclerView.Adapter<VideoAdapter.VideoDevicesViewHolder>() 
                 it(videoDevice)
             }
         }
-
-
     }
 
     private fun showPopupMenu(overFlowItemDevice: Button) {
@@ -76,7 +76,10 @@ class VideoAdapter: RecyclerView.Adapter<VideoAdapter.VideoDevicesViewHolder>() 
         popup.inflate(R.menu.side_menu)
         popup.setOnMenuItemClickListener { item ->
             when(item.itemId){
-                R.id.opFavorite ->{
+                R.id.containerInfoVideo ->{
+                    val navController = Navigation.findNavController(overFlowItemDevice)
+                    val action = ListVideoFragmentDirections.actionListVideoFragmentToInfoFragment2()
+                    navController.navigate(action)
                     true
                 }
                 else -> { false}

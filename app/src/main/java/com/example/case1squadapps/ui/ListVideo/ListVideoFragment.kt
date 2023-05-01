@@ -85,12 +85,7 @@ class ListVideoFragment: BaseFragment<FragmentListvideoBinding, ListVideoViewMod
             adapter = videoAdapter
             layoutManager = LinearLayoutManager(requireContext())
         }
-
-
     }
-
-
-
 
     override fun getViewBinding(
         inflater: LayoutInflater,

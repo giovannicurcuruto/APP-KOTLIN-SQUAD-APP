@@ -6,12 +6,10 @@
         android:id="@+id/dashboardFragment"
         android:icon="@drawable/ichomebottom"
         android:title="@string/dashboard" />
-
     <item
         android:id="@+id/bookmarkFragment"
         android:icon="@drawable/icbookmark"
         android:title="@string/bookmark" />
-
     <item
         android:id="@+id/listAlarmFragment"
         android:icon="@drawable/icalarmdevice"
@@ -24,9 +22,4 @@
         android:id="@+id/newDeviceFragment"
         android:icon="@drawable/ic_dashboard_black_24dp"
         android:title="@string/FAB" />
-
-
-
-
-
 </menu>
