@@ -55,10 +55,13 @@ Para visualizar esteo Swagger, poderá ser acessado [aqui](http://squadapps.ddns
 Como meio de autenticação na aplicação, foi utilizado e implementado no código a utilização de um Tokken de acesso, pois era uma aplicação interna e uma api de uso interno.  
 
 
-
 ## Design
 
 Para o desenvolvimento do case foi disponibilizado o visual de algumas telas, tal qual, algumas cores, icones (Assets). Como é um documento no Adobe XD fechado, não acho viavel o compartilhamento deste design, contudo segue abaixo como fica a aplicação rodando na minha versão. 
+
+![1](https://user-images.githubusercontent.com/11502844/235806104-2bd80e27-3c7d-4585-a81a-044976b240d5.png)
+
+![2](https://user-images.githubusercontent.com/11502844/235806112-ee7cf6f3-30b3-4ae6-8501-ef78d204d76f.png)
 
 
 ## Compilar e executar o projeto
