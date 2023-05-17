@@ -3,6 +3,7 @@ package com.example.case1squadapps.repository
 import com.example.case1squadapps.data.local.DaoInterface
 import com.example.case1squadapps.data.model.alarmCentrals.AlarmCentralsModel
 import com.example.case1squadapps.data.model.alarmCentrals.AlarmCentralsResponse
+import com.example.case1squadapps.data.model.commonDevices.CommonDeviceResponse
 import com.example.case1squadapps.data.model.videoDevices.VideoDeviceModel
 import com.example.case1squadapps.data.model.videoDevices.VideoDeviceResponse
 import com.example.case1squadapps.others.api
@@ -29,6 +30,14 @@ class Repository @Inject constructor(
 
     suspend fun getAllAlarmCentrals(): Response<AlarmCentralsResponse> {
         return api.listAlarmDevices()
+    }
+
+    suspend fun getAllDevicesAlarm() :Response<CommonDeviceResponse>{
+        return api.listAlarmDevicesCommon()
+    }
+
+    suspend fun getAllDevicesVideo() :Response<CommonDeviceResponse>{
+        return api.listVideoDevicesCommon()
     }
     suspend fun listAlarmModel(id: String? = null) = api.listAlarmDevicesById(id)
 

@@ -15,6 +15,7 @@ import com.example.case1squadapps.others.toast
 import com.example.case1squadapps.state.ResourceState
 import com.example.case1squadapps.ui.adapter.AlarmAdapter
 import com.example.case1squadapps.ui.adapter.CombinedAdapter
+import com.example.case1squadapps.ui.adapter.CommonAdapter
 import com.example.case1squadapps.ui.adapter.VideoAdapter
 import com.example.case1squadapps.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,8 +27,7 @@ import timber.log.Timber
 class DashboardFragment: BaseFragment<FragmentDashboardBinding, DashboardViewModel>() {
     override val viewModel: DashboardViewModel by viewModels()
 
-    private val combinedAdapter by lazy { CombinedAdapter() }
-
+    private val commonAdapter by lazy { CommonAdapter() }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
@@ -35,49 +35,41 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding, DashboardViewMod
     }
 
     private fun observer() = lifecycleScope.launch {
-        viewModel.combinedList.collect{(videoResources, alarmResources) ->
-            when {
-                videoResources is ResourceState.Success && alarmResources is ResourceState.Success-> {
+        viewModel.listAllDevices.collect{result->
+            when(result){
+                is ResourceState.Success ->{
                     binding.progressCircular.hide()
-                    videoResources.data?.let{values->
-                        alarmResources.data?.let { valuesA ->
-                            //
-                            combinedAdapter.alarmsDevices = valuesA.data.toList()
-                            combinedAdapter.videoDevices = values.data.toList()
-                            //println("#####" + combinedAdapter.videoDevices)
-                            //println("#####" + combinedAdapter.alarmsDevices)
-                        }
+                    result.data?.let{sus->
+                        commonAdapter.commonDevices = sus.data.toList()
                     }
                 }
-                videoResources is ResourceState.Error -> {
+                is ResourceState.Error ->{
                     binding.progressCircular.hide()
-                    videoResources.message?.let{message->
-                        toast(getString((R.string.an_error_occurred)))
-                        Timber.tag("DashboardFragment").e("Error -> $message")
+                    result.message?.let { messageError->
+                        toast(getString(R.string.an_error_occurred))
+                        Timber.tag("DashBoardFragment").e("Error -> $messageError")
                     }
 
                 }
-                alarmResources is ResourceState.Error -> {
-                    binding.progressCircular.hide()
-                    videoResources.message?.let{message->
-                        toast(getString((R.string.an_error_occurred)))
-                        Timber.tag("DashboardFragment").e("Error -> $message")
-                    }
-
-                }
-                videoResources is ResourceState.Loading && alarmResources is ResourceState.Loading->{
+                is ResourceState.Loading ->{
                     binding.progressCircular.show()
+
                 }
-                else ->{  }
+                else -> { }
             }
+
         }
+
+
+
+
     }
 
 
 
     private fun setupRecyclerView() = with(binding){
         recyclerDashboard.apply{
-            adapter = combinedAdapter
+            adapter = commonAdapter
             layoutManager = LinearLayoutManager(requireContext())
         }
     }
