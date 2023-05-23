@@ -13,13 +13,9 @@ import com.example.case1squadapps.others.hide
 import com.example.case1squadapps.others.show
 import com.example.case1squadapps.others.toast
 import com.example.case1squadapps.state.ResourceState
-import com.example.case1squadapps.ui.adapter.AlarmAdapter
-import com.example.case1squadapps.ui.adapter.CombinedAdapter
 import com.example.case1squadapps.ui.adapter.CommonAdapter
-import com.example.case1squadapps.ui.adapter.VideoAdapter
 import com.example.case1squadapps.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
