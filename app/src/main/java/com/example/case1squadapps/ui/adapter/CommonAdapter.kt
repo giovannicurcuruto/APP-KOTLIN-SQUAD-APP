@@ -14,16 +14,11 @@ class CommonAdapter(): RecyclerView.Adapter<CommonAdapter.CommonDevicesViewHolde
 
     private val differCallback = object: DiffUtil.ItemCallback<CommonDeviceModel>(){
         override fun areItemsTheSame(oldItem: CommonDeviceModel, newItem: CommonDeviceModel): Boolean {
-            return oldItem.hashCode() == newItem.hashCode()
+            return oldItem.id == newItem.id && oldItem.serial == newItem.serial && oldItem.name == newItem.name && oldItem.userName == newItem.userName && oldItem.password == newItem.password && oldItem.macAddress == newItem.macAddress
         }
 
         override fun areContentsTheSame(oldItem: CommonDeviceModel, newItem: CommonDeviceModel): Boolean {
-            return oldItem.id == newItem.id &&
-                    oldItem.name == newItem.name &&
-                    oldItem.macAddress == newItem.macAddress &&
-                    oldItem.password == newItem.password &&
-                    oldItem.userName == newItem.userName &&
-                    oldItem.serial == newItem.serial
+            return oldItem.id == newItem.id && oldItem.serial == newItem.serial && oldItem.name == newItem.name && oldItem.userName == newItem.userName && oldItem.password == newItem.password && oldItem.macAddress == newItem.macAddress
         }
     }
 

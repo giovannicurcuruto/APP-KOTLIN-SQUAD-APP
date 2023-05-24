@@ -53,12 +53,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding, DashboardViewMod
                 }
                 else -> { }
             }
-
         }
-
-
-
-
     }
 
 

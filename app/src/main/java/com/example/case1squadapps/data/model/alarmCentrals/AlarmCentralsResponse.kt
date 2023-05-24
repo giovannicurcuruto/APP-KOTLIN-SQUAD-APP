@@ -1,5 +1,6 @@
 package com.example.case1squadapps.data.model.alarmCentrals
 
+import com.example.case1squadapps.data.model.commonDevices.CommonDeviceResponse
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 

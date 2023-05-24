@@ -2,6 +2,7 @@ package com.example.case1squadapps.data.model.videoDevices
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.case1squadapps.data.model.commonDevices.CommonDeviceModel
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 @Entity(tableName = "videoModel")
