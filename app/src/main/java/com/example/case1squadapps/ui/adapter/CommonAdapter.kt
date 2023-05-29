@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.case1squadapps.R
 import com.example.case1squadapps.data.model.commonDevices.CommonDeviceModel
 import com.example.case1squadapps.databinding.ItemDeviceBinding
 
@@ -41,12 +42,17 @@ class CommonAdapter(): RecyclerView.Adapter<CommonAdapter.CommonDevicesViewHolde
 
     override fun onBindViewHolder(holder: CommonDevicesViewHolder, position: Int) {
         val devices = commonDevices[position]
-        //println("############## $"+commonDevices.size)
-        //println("#######################" + devices)
-        //println("####################### ule" + commonDevices)
+        println("############## $"+commonDevices.size)
+        println("#######################" + devices)
+        println("####################### ule" + commonDevices)
+        println("################### test" + devices.macAddress)
 
         holder.binding.apply {
             itemDevice.text = devices.name.toString()
+            if(devices.macAddress != null){
+                imageView.setImageResource(R.drawable.icalarmdevice)
+            }
+
         }
     }
 }
