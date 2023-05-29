@@ -7,7 +7,7 @@
         android:title="Editar dispositivo"
         />
     <item
-        android:id="@+id/containerInfoAlarm"
+        android:id="@+id/containerInfo"
         android:title="Informações"
         />
     <item
@@ -15,8 +15,8 @@
         android:title="Marcar Favorito"
         />
     <item
-        android:id="@+id/containerInfoVideo"
-        android:title="InfoVideo" />
+        android:id="@+id/remove"
+        android:title="Remover" />
 
 
 </menu>

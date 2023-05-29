@@ -76,7 +76,7 @@ class VideoAdapter: RecyclerView.Adapter<VideoAdapter.VideoDevicesViewHolder>() 
         popup.inflate(R.menu.side_menu)
         popup.setOnMenuItemClickListener { item ->
             when(item.itemId){
-                R.id.containerInfoVideo ->{
+                R.id.containerInfo ->{
                     val navController = Navigation.findNavController(overFlowItemDevice)
                     val action = ListVideoFragmentDirections.actionListVideoFragmentToInfoFragment2()
                     navController.navigate(action)

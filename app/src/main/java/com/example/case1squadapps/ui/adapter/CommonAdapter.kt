@@ -2,12 +2,16 @@ package com.example.case1squadapps.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.PopupMenu
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.case1squadapps.R
 import com.example.case1squadapps.data.model.commonDevices.CommonDeviceModel
 import com.example.case1squadapps.databinding.ItemDeviceBinding
+import com.example.case1squadapps.ui.ListAlarm.ListAlarmFragmentDirections
 
 class CommonAdapter(): RecyclerView.Adapter<CommonAdapter.CommonDevicesViewHolder>() {
 
@@ -52,7 +56,47 @@ class CommonAdapter(): RecyclerView.Adapter<CommonAdapter.CommonDevicesViewHolde
             if(devices.macAddress != null){
                 imageView.setImageResource(R.drawable.icalarmdevice)
             }
-
         }
+
+        holder.itemView.setOnClickListener {
+            onItemClickListener?.let{
+                it(devices)
+            }
+        }
+
+        holder.binding.overFlowItemDevice.setOnClickListener {
+            showPopupMenu(holder.binding.overFlowItemDevice)
+        }
+
+
     }
+
+    private var onItemClickListener: ((CommonDeviceModel) -> Unit)? = null
+
+    fun setOnClickListener(listener: (CommonDeviceModel) -> Unit){
+        onItemClickListener = listener
+    }
+
+    private fun showPopupMenu(overFlowItemDevice: Button){
+        val popup = PopupMenu(overFlowItemDevice.context, overFlowItemDevice)
+        popup.inflate(R.menu.side_menu)
+        popup.setOnMenuItemClickListener { item ->
+            when(item.itemId){
+                R.id.containerInfo -> {
+                    val navController = Navigation.findNavController(overFlowItemDevice)
+                    val action = ListAlarmFragmentDirections.actionListAlarmFragmentToInfoFragment()
+                    navController.navigate(action)
+                    true
+                }
+                else ->{
+                    false
+                }
+            }
+        }
+
+        popup.show()
+
+    }
+
+
 }

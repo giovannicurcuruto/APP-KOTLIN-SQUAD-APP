@@ -78,7 +78,7 @@ class AlarmAdapter (): RecyclerView.Adapter<AlarmAdapter.AlarmCentralsViewHolder
         popup.inflate(R.menu.side_menu)
         popup.setOnMenuItemClickListener { item ->
             when(item.itemId){
-                R.id.containerInfoAlarm ->{
+                R.id.containerInfo ->{
                     val navController = Navigation.findNavController(overFlowItemDevice)
                     val action = ListAlarmFragmentDirections.actionListAlarmFragmentToInfoFragment()
                     navController.navigate(action)
